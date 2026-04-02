@@ -66,11 +66,22 @@ class ModelManager:
 
         return model, metadata
 
+    def _resolve_target_size(self, model_name: str) -> int:
+        img_size_value = self.metadata[model_name].get("img_size", settings.input_size)
+
+        if isinstance(img_size_value, int):
+            return img_size_value
+
+        if isinstance(img_size_value, (tuple, list)) and len(img_size_value) > 0:
+            return int(img_size_value[0])
+
+        return int(settings.input_size)
+
     @torch.inference_mode()
     def predict_from_bytes(self, image_bytes: bytes) -> dict:
         original = read_image_as_pil(image_bytes)
 
-        target_size = int(self.metadata["unet"].get("img_size", settings.input_size))
+        target_size = self._resolve_target_size("unet")
         arr = pil_to_normalized_array(original, target_size)
         tensor = torch.from_numpy(arr).to(self.device)
 
