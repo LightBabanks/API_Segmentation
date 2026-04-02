@@ -7,14 +7,14 @@ from PIL import Image
 
 
 CLASS_COLORS: Dict[int, Tuple[int, int, int]] = {
-    0: (0, 0, 0),           # fond
-    1: (142, 180, 255),     # bleu
-    2: (255, 188, 214),     # rose
-    3: (180, 255, 200),     # vert
-    4: (255, 220, 150),     # orange clair
-    5: (210, 190, 255),     # violet
-    6: (255, 150, 150),     # rouge clair
-    7: (150, 240, 240),     # cyan
+    0: (0, 0, 0),         # fond
+    1: (255, 64, 64),     # rouge vif
+    2: (0, 255, 170),     # vert menthe
+    3: (0, 200, 255),     # cyan vif
+    4: (255, 200, 0),     # jaune/orange
+    5: (180, 80, 255),    # violet vif
+    6: (255, 80, 180),    # rose soutenu
+    7: (120, 255, 120),   # vert clair vif
 }
 
 
